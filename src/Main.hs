@@ -6,20 +6,17 @@ import Web.TwitterClient.Types
 
 main :: IO ()
 main = do
-  putStr "Input your consumer key: "
+  putStrLn "Input your consumer key: "
   consumerKey    <- getLine
-  putStr "Input your consumer secret: "
+  putStrLn "Input your consumer secret: "
   consumerSecret <- getLine
-  putStr "Input your callback URI: "
+  putStrLn "Input your callback URI: "
   callback       <- getLine
   let apiKeys = APIKeys consumerKey consumerSecret
   tempTokens <- acquireTempTokens apiKeys callback
-  putStr "Please go to https://api.twitter.com/oauth/authorize?oauth_token="
-  putStrLn (token tempTokens)
-  putStr "Hit enter when done"
-  void getLine
+  putStrLn $ "Please go to https://api.twitter.com/oauth/authorize?oauth_token=" ++ token tempTokens
   putStrLn "Input oauth_verifier"
   oauthVerifier <- getLine
   accessTokens  <- acquireAccessTokens apiKeys tempTokens oauthVerifier
-  displayTimeline accessTokens
+  displayTimeline apiKeys accessTokens
   return ()

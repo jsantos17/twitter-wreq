@@ -23,7 +23,9 @@ executable twitter-wreq
     Web.TwitterClient
     Web.TwitterClient.Types
   build-depends:
-      base >=4.7 && <4.8
+      aeson-lens
+    , aeson
+    , base >=4.7 && <4.8
     , wreq >= 0.3.1
     , lens
     , bytestring

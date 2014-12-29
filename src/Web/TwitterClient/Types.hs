@@ -11,7 +11,8 @@ type CallbackURI = String
 type OAuthVerifier = String
 
 data APIKeys = APIKeys { consumerKey    :: String
-                       , consumerSecret :: String }
+                       , consumerSecret :: String } deriving (Show)
 
 data TokenPair = TokenPair { token       :: String
-                           , tokenSecret :: String }
+                           , tokenSecret :: String
+                           , screenName  :: Maybe String } deriving (Show)
