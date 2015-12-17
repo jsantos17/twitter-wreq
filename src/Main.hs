@@ -11,7 +11,7 @@ main = do
   putStrLn "Input your consumer secret: "
   consumerSecret <- getLine
   putStrLn "Input your callback URI: "
-  callback       <- getLine
+  callback       <- getLined
   let apiKeys = APIKeys consumerKey consumerSecret
   tempTokens <- acquireTempTokens apiKeys callback
   putStrLn $ "Please go to https://api.twitter.com/oauth/authorize?oauth_token=" ++ token tempTokens
